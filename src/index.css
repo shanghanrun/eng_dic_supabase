@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.wordcard-border1{
+  border: 2px solid gray;
+  padding: 3px;
+  margin-bottom: 2px;
+}
+.wordcard-border2{
+  border: 1px solid gray;
+  padding: 3px;
+}
+.wordcard-border2 div{
+  min-height: 20px;
+}
+
+*{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin: 0;
+}
+.green {
+  display: inline-block; /* h2 속성때문에 padding적용이 안되기 때문에 추가->그래도 안됨 */
+  padding: 0 3px;
+  width: 120px;
+  transition: background-color 0.3s ease-in-out;
+}
+.green:hover{
+  background-color: greenyellow;
+}
+.item:hover{
+  background-color: rgb(197, 196, 196);
+}
+
+
+.bold{
+  font-weight: bold;
+}
+.blue{
+  color: rgb(41, 121, 251);
+  font-size: 20px;
+}
