@@ -50,6 +50,7 @@ const dataStore = create((set, get)=>({
 				wordList: data,
 		})
 	},	
+	setWordList: (newList)=> set({wordList: newList}),
 	removeWord: async(id)=>{
 		console.log('store로 받은 id :', id)
 		const {data, error} = await supabase.from('words').delete().eq('id', id)
