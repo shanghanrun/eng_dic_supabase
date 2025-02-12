@@ -118,13 +118,13 @@ const WordCard = ({word}) => {
 						<div onClick={()=>handleEdit("info")} className="item">{word?.info || " "}</div>
 					</div>
 				)}
-				<span>
+				{/* <span> */}
 					{editing?(
 						<Button variant="success" onClick={handleUpdate} >확인</Button>
 						) :(
 						<Button onClick={deleteWord} >삭제</Button>)
 					}
-				</span>
+				{/* </span> */}
 			</div>
 			
 		</Col>
