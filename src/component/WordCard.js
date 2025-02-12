@@ -80,7 +80,7 @@ const WordCard = ({word}) => {
 						/>
 				):(
 					<div onClick={()=>handleEdit("image")}>
-						<img src={word?.image || null} alt=""  width="120px"/>
+						<img src={word?.image || null} alt=""  width="130px" height="90px"/>
 					</div>
 				)}
 		</Col>

@@ -78,12 +78,12 @@ const DicForm = () => {
 		<Form onSubmit={addWord}>
 			<Form.Group className="mb-3" controlId="formName">
 				<Form.Label>Word</Form.Label>
-				<Form.Control type="text" placeholder="Word를 입력해주세요" onChange={(e)=> setEng(e.target.value)} value={eng} />
+				<Form.Control type="text" placeholder="English Word를 입력해주세요" onChange={(e)=> setEng(e.target.value)} value={eng} />
 			</Form.Group>
 
 			<Form.Group className="mb-3" controlId="formContact">
 				<Form.Label>의미</Form.Label>
-				<Form.Control type="text" placeholder="의미를 입력해주세요" onChange={(e)=>setKor(e.target.value)} value={kor}/>
+				<Form.Control type="text" placeholder="한글 뜻을 입력해주세요" onChange={(e)=>setKor(e.target.value)} value={kor}/>
 			</Form.Group>
 			<Form.Group className="mb-3" controlId="formContact">
 				<Form.Label>기타</Form.Label>
