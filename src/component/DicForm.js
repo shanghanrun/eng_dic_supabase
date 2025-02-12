@@ -9,19 +9,21 @@ const DicForm = () => {
 	const [eng, setEng] = useState("");
 	const [kor, setKor] = useState("");
 	const [info, setInfo] = useState("");
+	const [image, setImage] = useState("");
 	const [batch, setBatch] = useState("");
 	const [excel, setExcel] = useState("");
 
 	const addWord= async(event)=>{
 		event.preventDefault();
 
-		const data ={eng, kor, info};
+		const data ={eng, kor, info, image};
 		await register(data); 
 		
 		// 입력란 비우기
 		setEng("");
 		setKor("");
 		setInfo("");
+		setImage("");
 	}
 	const addBatch= async(event)=>{
 		event.preventDefault();
@@ -86,6 +88,10 @@ const DicForm = () => {
 			<Form.Group className="mb-3" controlId="formContact">
 				<Form.Label>기타</Form.Label>
 				<Form.Control type="text" placeholder="기타정보를 입력해주세요" onChange={(e)=>setInfo(e.target.value)} value={info}/>
+			</Form.Group>
+			<Form.Group className="mb-3" controlId="formContact">
+				<Form.Label>이미지</Form.Label>
+				<Form.Control type="text" placeholder="이미지주소를 입력해주세요" onChange={(e)=>setImage(e.target.value)} value={image}/>
 			</Form.Group>
 			<Button variant="primary" type="submit">
 				추가

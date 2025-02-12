@@ -12,10 +12,11 @@ const WordCard = ({word, onUpdate}) => {
 	}
 	// 수정모드와 관련해서
 	const [editing, setEditing] = useState(false);
-	const [newWord, setNewWord] = useState({eng:word?.eng, kor:word?.kor, info: word?.info, id:word?.id});
+	const [newWord, setNewWord] = useState({eng:word?.eng, kor:word?.kor, info: word?.info, image: word?.image, id:word?.id});
 	const engRef = useRef(null);
 	const korRef = useRef(null);
 	const infoRef = useRef(null);
+	const imageRef = useRef(null);
 	
 	// 수정할 필드를 클릭하면, 해당 input에 포커스 이동
 	const handleEdit =(field)=>{
@@ -33,12 +34,15 @@ const WordCard = ({word, onUpdate}) => {
 				infoRef.current?.focus();
 				// infoRef.current.setSelectionRange(0, 0); // 맨 앞에 커서 이동
 			}
+			if(field === 'image'){
+				imageRef.current?.focus();
+			}
 		},1)
 	}
 	const handleUpdate = async()=>{
-		if(newWord.eng !== word.eng || newWord.kor !==word.kor || newWord.info !== word.info){
+		if(newWord.eng !== word.eng || newWord.kor !==word.kor || newWord.info !== word.info || newWord.image !== word.image){
 			await updateWord(newWord);
-			setNewWord({eng:"", kor:"",info:"", id:""})//다음번 입력을 위해 초기화
+			setNewWord({eng:"", kor:"",info:"", id:"", image:""})//다음번 입력을 위해 초기화
 		}
 		setEditing(false);
 	}
@@ -47,7 +51,7 @@ const WordCard = ({word, onUpdate}) => {
 		if(e.key === 'Enter') handleUpdate();
 	}
 	const handleClickOutside = (e)=>{
-		if(editing && !engRef.current?.contains(e.target) && !korRef.current?.contains(e.target) && !infoRef.current?.contains(e.target)) handleUpdate();
+		if(editing && !engRef.current?.contains(e.target) && !korRef.current?.contains(e.target) && !infoRef.current?.contains(e.target) && !imageRef.current?.contains(e.target)) handleUpdate();
 	}
 
 	//시작하자마자 바깥 클릭 감지 이벤트 추가
@@ -64,7 +68,19 @@ const WordCard = ({word, onUpdate}) => {
   return (
 	<Row className="wordcard-border1">
 		<Col className="wordcard-border2" lg={3} >
-			<img src={imgUrl || null} alt=""  width="100px"/>
+			{editing? (
+					<input
+							ref={imageRef}
+							type="text"
+							value={newWord.image}
+							onChange={(e)=>setNewWord({...newWord, image:e.target.value})}
+							onKeyDown={handleKeyDown}
+						/>
+				):(
+					<div onClick={()=>handleEdit("image")}>
+						<img src={word?.image || null} alt=""  width="120px"/>
+					</div>
+				)}
 		</Col>
 		<Col className="wordcard-border2"  lg={9}>
 			<div style={{display: "flex", gap:"3px", justifyContent:"space-between"}}>

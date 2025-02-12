@@ -64,7 +64,8 @@ const dataStore = create((set, get)=>({
 		const {data, error} = await supabase.from('words').update({
 				eng:newWord.eng,
 				kor:newWord.kor,
-				info:newWord.info
+				info:newWord.info,
+				image:newWord.image
 			})
 			.eq('id', newWord.id)
 		if (error) { console.log(error); return;}
